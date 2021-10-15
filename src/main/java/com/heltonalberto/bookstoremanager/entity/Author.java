@@ -1,4 +1,4 @@
-package entity;
+package com.heltonalberto.bookstoremanager.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
