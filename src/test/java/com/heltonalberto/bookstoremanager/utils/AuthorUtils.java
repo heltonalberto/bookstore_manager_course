@@ -5,7 +5,7 @@ import com.heltonalberto.bookstoremanager.dto.AuthorDTO;
 import com.heltonalberto.bookstoremanager.entity.Author;
 
 public class AuthorUtils {
-/*	
+	
 	public static final Faker faker = Faker.instance();
 	
 	public static AuthorDTO createFakeAuthorDTO() {
@@ -23,5 +23,5 @@ public class AuthorUtils {
 				.age(faker.number().numberBetween(0,100))
 				.build();
 	}
-	*/
+	
 }

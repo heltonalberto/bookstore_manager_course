@@ -23,35 +23,25 @@ import com.heltonalberto.bookstoremanager.service.BookService;
 @RequestMapping("/api/v1/books")
 public class BookController {
 
-	//private BookRepository bookRepository;
-	
-	//@AutoWired faz a injeção de dependencia de um atributo da classe bookRepository para uso dentro dessa classe
-	//@Autowired
-	//public BookController(BookRepository bookRepository) {
-	//	this.bookRepository = bookRepository;
-	//}
-
-	//@PostMapping marca esta operção pelo tipo Post do modelo Rest, que siginifica que este método junto com o corpo passado pelo livro 
-	//@PostMapping
-	//public MessageResponseDTO create(@RequestBody Book book) {
-	//	Book savedBook = bookRepository.save(book);
-	//	return MessageResponseDTO.builder()
-	//			.message("Livro created with ID: " + savedBook.getId())
-	//			.build();
-	//}
-	
-	
 	private BookService bookService;
 
+	//@AutoWired faz a injeção de dependencia de um atributo da classe bookRepository para uso dentro dessa classe
 	@Autowired
 	public BookController(BookService bookService) {
 		this.bookService = bookService;
 	}
 
+
+	//@PostMapping marca esta operção pelo tipo Post do modelo Rest, que siginifica que este método junto com o corpo passado pelo livro 
 	@PostMapping
-	public MessageResponseDTO create(@RequestBody Book book) {
-		return bookService.create(book);
+	public MessageResponseDTO create(@RequestBody @Valid BookDTO bookDTO) {
+		return bookService.create(bookDTO);
 	}
+	
+	//@PostMapping
+	//public MessageResponseDTO create(@RequestBody Book book) {
+	//	return bookService.create(book);
+	//}
 
 	
 	//@PostMapping
@@ -62,10 +52,6 @@ public class BookController {
 	//			.build();
 	//}
 
-	// @PostMapping
-	// public MessageResponseDTO create(@RequestBody @Valid BookDTO bookDTO) {
-	// return bookService.create(bookDTO);
-	// }
 
 	//@GetMapping("/{id}")
 	//public BookDTO findById(@PathVariable Long id) throws BookNotFoundException {

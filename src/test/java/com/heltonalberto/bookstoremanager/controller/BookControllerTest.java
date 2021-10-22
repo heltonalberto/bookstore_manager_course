@@ -1,8 +1,10 @@
 package com.heltonalberto.bookstoremanager.controller;
 
+
+
 import org.hamcrest.core.Is;
+import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -21,9 +23,9 @@ import com.heltonalberto.bookstoremanager.dto.MessageResponseDTO;
 import com.heltonalberto.bookstoremanager.service.BookService;
 import com.heltonalberto.bookstoremanager.utils.BookUtils;
 
-//@ExtendWith(MockitoExtension.class)
+@ExtendWith(MockitoExtension.class)
 public class BookControllerTest {
-/*	
+	
 	private MockMvc mockMvc;
 	
 	@Mock
@@ -31,6 +33,7 @@ public class BookControllerTest {
 	
 	@InjectMocks
 	private BookController bookController;
+	
 	
 	@BeforeEach
 	void setup() {
@@ -43,12 +46,16 @@ public class BookControllerTest {
 	@Test
 	void testWhenPostIsCalledThenABookShouldBeCreated() throws Exception {
 		BookDTO bookDTO =  BookUtils.createFakeBookDTO();
-		bookDTO.setIsbn("Invalid isbn");
+		MessageResponseDTO expectedMessageResponse = MessageResponseDTO.builder()
+				.message("Book created with ID: " + bookDTO.getId())
+				.build();
 		
+		Mockito.when(bookService.create(bookDTO)).thenReturn(expectedMessageResponse);
+	
 		mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/books")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(BookUtils.asJsonString(bookDTO)))
-				.andExpect(MockMvcResultMatchers.status().isBadRequest());
+				.andExpect(MockMvcResultMatchers.status().isOk())
+						.andExpect(MockMvcResultMatchers.jsonPath("$.message", Is.is(expectedMessageResponse.getMessage())));
 	}
-	*/
 }

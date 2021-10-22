@@ -11,7 +11,7 @@ import com.heltonalberto.bookstoremanager.utils.AuthorUtils;
 
 
 public class BookUtils {
-/*
+
 	private static final Faker faker = Faker.instance();
 	
 	public static BookDTO createFakeBookDTO() {
@@ -22,7 +22,7 @@ public class BookUtils {
 				.chapters(faker.number().numberBetween(0,20))
 				.isbn("0-596-52068-9")
 				.publisherName(faker.book().publisher())
-				.author(createFakeAuthorDTO())
+				.author(AuthorUtils.createFakeAuthorDTO())
 				.build();
 	}
 	
@@ -34,21 +34,19 @@ public class BookUtils {
 				.chapters(faker.number().numberBetween(0,20))
 				.isbn("0-596-52068-9")
 				.publisherName(faker.book().publisher())
-				.author(createFakeAuthorDTO())
+				.author(AuthorUtils.createFakeAuthor())
 				.build();
 	}
-	
+
 	public static String asJsonString(BookDTO bookDTO) {
 		try {
 			ObjectMapper objectMapper = new ObjectMapper();
-			objectMapper.configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES);
-			objectMapper.configure(SerializationFeature.WRITE_DATE_KEYS_AS_TIMESTAMPS);
+			objectMapper.configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, false);
+			objectMapper.configure(SerializationFeature.WRITE_DATE_KEYS_AS_TIMESTAMPS, false);
 			objectMapper.registerModule(new JavaTimeModule());
-						return objectMapper.writeValueAsString(bookDTO);
-			
+						return objectMapper.writeValueAsString(bookDTO);	
 		}catch(Exception e){
 			throw new RuntimeException(e);
 		}
 	}
-	*/
 }
