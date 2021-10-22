@@ -11,10 +11,15 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+//@Entity define que esta classe terá relação com o banco de dados
 @Entity
+//@Data inclui os metodos getters and setters e hashcodes
 @Data
+//@Builder utilizado para configurar objetos de forma segura
 @Builder
+//@NoArgsConstructor gera construtores sem argumentos
 @NoArgsConstructor
+//@AllArgsConstructor gera construtores com argumentos
 @AllArgsConstructor
 public class Author {
 	
@@ -28,5 +33,4 @@ public class Author {
 	@Column(nullable = false)
 	private Integer age;
 
-	
 }

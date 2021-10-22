@@ -3,6 +3,8 @@ package com.heltonalberto.bookstoremanager.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.heltonalberto.bookstoremanager.dto.BookDTO;
 import com.heltonalberto.bookstoremanager.dto.MessageResponseDTO;
+import com.heltonalberto.bookstoremanager.exception.BookNotFoundException;
 import com.heltonalberto.bookstoremanager.service.BookService;
 
 @RestController
@@ -26,7 +29,7 @@ public class BookController {
 
 	//@PostMapping
 	//public MessageResponseDTO create(Book book) {
-		//return bookService.create(book);
+	//	return bookService.create(book);
 	//}
 	
 	//@Autowired
@@ -47,4 +50,8 @@ public class BookController {
 		return bookService.create(bookDTO);
 	}
 	
+	@GetMapping("/{id}")
+	public BookDTO findById(@PathVariable Long id) throws BookNotFoundException{
+		return bookService.findById(id);
+	}
 }

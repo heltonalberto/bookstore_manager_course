@@ -11,7 +11,7 @@ import com.heltonalberto.bookstoremanager.utils.AuthorUtils;
 
 
 public class BookUtils {
-
+/*
 	private static final Faker faker = Faker.instance();
 	
 	public static BookDTO createFakeBookDTO() {
@@ -44,11 +44,11 @@ public class BookUtils {
 			objectMapper.configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES);
 			objectMapper.configure(SerializationFeature.WRITE_DATE_KEYS_AS_TIMESTAMPS);
 			objectMapper.registerModule(new JavaTimeModule());
-			
-			return objectMapper.writeValueAsString(bookDTO);
+						return objectMapper.writeValueAsString(bookDTO);
 			
 		}catch(Exception e){
 			throw new RuntimeException(e);
 		}
 	}
+	*/
 }
