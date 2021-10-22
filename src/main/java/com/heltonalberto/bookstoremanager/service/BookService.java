@@ -10,6 +10,7 @@ import com.heltonalberto.bookstoremanager.exception.BookNotFoundException;
 import com.heltonalberto.bookstoremanager.mapper.BookMapper;
 import com.heltonalberto.bookstoremanager.repository.BookRepository;
 
+//@Service anotação do spring para dizer ao framework que esta classe será gerenciada pelo spring e podera receber a injeção de outros serviços
 @Service
 public class BookService {
 
@@ -22,12 +23,8 @@ public class BookService {
 		this.bookRepository = bookrepository;
 	}
 
-	public MessageResponseDTO create(BookDTO bookDTO) {
-	//public MessageResponseDTO create(Book book) {
-		Book bookToSave = bookMapper.toModel(bookDTO);
-		//Book bookToSave = bookMapper.toModel(book);
-		
-		Book savedBook= bookRepository.save(bookToSave);
+	public MessageResponseDTO create(Book book) {
+		Book savedBook= bookRepository.save(book);
 		return MessageResponseDTO.builder()
 				.message("Book created with ID " + savedBook.getId())
 				.build();
@@ -40,4 +37,16 @@ public class BookService {
 		return bookMapper.toDTO(book);
 	}
 	
+	/*
+	public MessageResponseDTO create(BookDTO bookDTO) {
+		Book bookToSave = bookMapper.toModel(bookDTO);
+		
+		Book savedBook= bookRepository.save(bookToSave);
+		return MessageResponseDTO.builder()
+				.message("Book created with ID " + savedBook.getId())
+				.build();
+	}
+	*/
+
+
 }
